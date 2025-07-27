@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Love Letters</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script defer src="js/theme.js"></script>
+  <style>
+    .letters-wrapper {
+      max-width: 700px;
+      margin: 2rem auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      background: rgba(255, 255, 255, 0.3);
+      padding: 2rem;
+      border-radius: 16px;
+      backdrop-filter: blur(5px);
+    }
+
+    body.dark .letters-wrapper {
+      background: rgba(42, 42, 42, 0.3);
+    }
+
+    .letter {
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 1rem 1.5rem;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .letter:hover {
+      background: var(--card-hover);
+    }
+
+    .letter-title {
+      font-size: 1.1rem;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+      font-family: "Segoe Script", cursive;
+    }
+
+    .letter-content {
+      font-size: 0.95rem;
+      font-family: "Georgia", serif;
+      line-height: 1.6;
+      display: none;
+      margin-top: 0.5rem;
+      white-space: pre-wrap;
+    }
+
+    .letter.open .letter-content {
+      display: block;
+    }
+  </style>
+</head>
+<body class="home-page">
+  <!-- <button class="toggle-theme" onclick="toggleTheme()">🌙 Toggle</button> -->
+
+  <div class="letters-wrapper">
+    <h1>💌 Love Letters</h1>
+
+    <div class="letter" onclick="this.classList.toggle('open')">
+      <div class="letter-title">Nova's</div>
+      <div class="letter-content">
+       to my human, Mother,
+
+        hi. it’s me. one of your favorite creature in this entire house (and universe).
+
+        first of all, you're lucky to have me. i don’t say that enough because, well, you should already know. i'm elegant. i'm iconic. i'm fluffy. and yet... you still have the audacity to pet nyxie first sometimes? disgusting.
+
+        but even though you feed me late, ignore my very reasonable 3am zoomies, and call me names like “gremlin” (the nerve), i still love you. you’re the only one i let kiss my forehead without biting. and that means something.
+
+        i like how you talk to me like i understand you. and okay... maybe i do. i know when you’re sad. i know when you're tired. and sometimes, when you're just sitting there on your phone, i stare at you like “hey. i’m here. love me.” because i do love you. i just won't say it out loud. i'm a cat. i have standards.
+
+        you’re my human. my pillow. my heater. my gossip buddy. my favorite thing.
+
+        don’t forget it.
+
+        paws and attitude,
+        nova 🐾
+      </div>
+    </div>
+
+    <div class="letter" onclick="this.classList.toggle('open')">
+      <div class="letter-title">Nyxie's</div>
+      <div class="letter-content">
+       dear anjali, Mother,
+
+        i did crimes today.
+
+        i knocked over your cup. again. i tried to climb the curtain. i may or may not have licked nova’s tail just to annoy her. worth it.
+
+        anyway. hi. it’s me. your favorite little disaster. your shadow. your baby. your agent of chaos.
+
+        i know i drive you nuts. i know i knock things over and stare at you like it was your fault. i know i pretend i don’t hear you when you say “no.” but also… i follow you everywhere. i sleep near you even when i could sleep literally anywhere else. i meow at you because i trust you’ll understand. and sometimes i do dumb little things just to make you laugh.
+
+        you make me feel safe. warm. loved. you give me snacks. you give me head pats. and even when i knock over your water for the 12th time in a row, you still call me your baby.
+
+        i might be a goblin… but i’m your goblin.
+
+        don’t ever stop loving me. or i’ll eat your charger.
+
+        with claws and purring menace,
+        nyxie 🐾
+
+
+      </div>
+    </div>
+
+    <div class="letter" onclick="this.classList.toggle('open')">
+      <div class="letter-title">Silly Lil Prince's</div>
+      <div class="letter-content">
+        Sometimes I miss you even when we’re talking.  
+        Not because you're far away —  
+        but because I wish I could say more than words ever allow.
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>

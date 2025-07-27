@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>100 Reasons I Love You</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <script defer src="js/theme.js"></script>
+  <style>
+    body {
+      padding: 2rem 1rem;
+      font-family: "Segoe UI", sans-serif;
+      text-align: center;
+    }
+
+    h1 {
+      font-family: "Segoe Script", cursive;
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+    }
+/* 
+    .heart-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+      gap: 10px;
+      max-width: 600px;
+      margin: 0 auto;
+    } */
+
+    .heart {
+      background: rgba(255, 255, 255, 0.4);
+      border: 2px solid #ff88aa;
+      border-radius: 12px;
+      font-size: 1.3rem;
+      cursor: pointer;
+      padding: 1rem;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(4px);
+      position: relative;
+      user-select: none;
+    }
+
+    .heart.revealed {
+      background: rgba(255, 255, 255, 0.7);
+      font-family: "Segoe Script", cursive;
+      font-size: 0.95rem;
+      color: var(--text);
+    }
+
+    body.dark .heart {
+      background: rgba(42, 42, 42, 0.4);
+      border-color: #ff6699;
+    }
+
+    body.dark .heart.revealed {
+      background: rgba(42, 42, 42, 0.7);
+    }
+  </style>
+</head>
+<body>
+  <!-- <button class="toggle-theme" onclick="toggleTheme()">🌙 Toggle</button>s -->
+  <h1>100 Reasons Why I Love You</h1>
+
+  <div class="heart-grid" id="heartGrid"></div>
+
+  <script>
+    const reasons = [
+      "I love that you don’t even know how much i love you",
+      "I love your eyes they are so beautiful",
+      "i love the way you look.. its mesmerizing.",
+      "I love how you feel like you’re mine even when you’re not",
+      "I love the way you come to me whenever you think i can help.", 
+
+      "I love how annoying you are it's actually cute",
+      "I love your voice I could listen to it all day",
+      "I love your laugh it makes me stupid happy",
+      "I love your sleepy voice it kills me everytime",
+      "I love how you argue even when you’re wrong and still win",
+
+      "I love how much attitude you have it’s hot",
+      "I love how your brain works it’s a whole circus and I’m obsessed",
+      "I love how you just know when I’m not okay",
+      "I love the way you say my name idk it hits diff",
+      "I love how you always get mad at me and then forgive me in 2 mins",
+
+      "I love that you exist in my head 24/7 rent free",
+      "I love that I can’t stop thinking about you ever",
+      "I love how you say 'shut up' like it means 'i love you'",
+      "I love how being with you feels like home",
+      "I love how much you love your cats it’s wholesome",
+
+      "I love that you can destroy my mood and fix it in 1 sentence",
+      "I love how you make me laugh when i don’t wanna",
+      "I love your weird lil nicknames for me",
+      "I love how you make me feel safe without trying",
+      "I love how you talk to your cats like they’re babies",
+
+      "I love how you made me feel things i didn’t know i could",
+      "I love you my dhokla!",
+      "I love how even when you’re quiet you’re still loud in my head",
+      "I love how you just make things feel okay again",
+      "I love how you get all soft when you’re tired",
+
+      "I love how you drag me into your mess and i never wanna leave",
+      "I love how brave you are even when you’re scared",
+      "I love how your texts feel like hugs sometimes",
+      "I love how you show up in my dreams and then ruin my sleep",
+      "I love how you say 'shut up' but it feels like 'stay'",
+
+      "I love how you love cats more than most people",
+      "I love how dramatic you get when you’re hungry",
+      "I love how you say 'i hate you' but mean 'i love you'",
+      "I love how much you mean to me it’s actually scary",
+      "I love how you remember the smallest things i say",
+      "I love how you call me out on my bullshit but still love me anyway",
+      "I love how sometimes you act like a villain but you’re literally all heart",
+      "I love how you get mad when I don’t text back fast enough",
+      "I love the way you say 'idiot' like it's a love word",
+      "I love how you act like you're the boss of me and maybe you are",
+
+      "I love the way you smile when you're being dramatic on purpose",
+      "I love how you always make fun of me but lowkey adore me",
+      "I love how you make every little moment feel huge",
+      "I love how you say dumb things and then giggle like a gremlin",
+      "I love how your chaos is my favorite kind of peace",
+
+      "I love how you always look so serious but your heart is mush",
+      "I love how you’re the biggest menace but I still wanna hold you forever",
+      "I love how you act like you're annoyed but I know you like me",
+      "I love how you forget stuff mid-sentence and then blame me for it",
+      "I love how you pretend you're not soft when you're literally melting",
+
+      "I love how you’re the main character in your own universe",
+      "I love how you always look good even when you're a mess",
+      "I love how you say 'brb' and then never brb",
+      "I love how you randomly say 'i want food' like I’m a delivery app",
+      "I love how you bully me into loving you more every day",
+
+      "I love how your moods shift like weather and I still wanna stay",
+      "I love how you bite your lip when you’re focused",
+      "I love how you make me feel stupid and lucky at the same time",
+      "I love how your voice lives in my head rent free",
+      "I love how you care even when you act like you don’t",
+
+      "I love how you always choose the dumbest option and somehow win",
+      "I love how you're the reason I smile like an idiot at my screen",
+      "I love how you say 'ew' when I’m being sappy but still blush",
+      "I love how you act like you’d punch me but you’d cry if I got hurt",
+      "I love how you exist like the world made space just for you",
+
+      "I love how you make me nervous and calm all at once",
+      "I love how you’re literally a cat in human form",
+      "I love how you spam me and then say 'you’re ignoring me??'",
+      "I love how you’re so complicated but I wouldn’t change a thing",
+      "I love how you make even bad days feel like they’re worth it",
+
+      "I love how you talk like you’re always in a romcom",
+      "I love how you hate everyone except like 3 people and I’m one of them",
+      "I love how you say things like 'i’m gonna disappear' and then never do",
+      "I love how you act cold but you’re the warmest person I know",
+      "I love how you never let me stay sad for too long",
+
+      "I love how you type in all lowercase like it’s a personality trait",
+      "I love how you get jealous of my blanket sometimes",
+      "I love how you try to act tough when you're clearly baby",
+      "I love how you turn every convo into something chaotic",
+      "I love how you look at cats like they’re gods",
+
+      "I love how you make me feel like the luckiest idiot alive",
+      "I love how your voice softens when you talk about things you love",
+      "I love how you get mad at me and then miss me 2 mins later",
+      "I love how you make me wanna scream into a pillow and kiss you at the same time",
+      "I love how you always make me feel like i belong somewhere",
+
+      "I love how your clinginess makes me feel needed in the best way",
+      "I love how you keep breaking my heart a little every day but i still want you",
+      "I love how you tell me everything even when you say 'nvm' five times",
+      "I love how you get scared of emotions but still feel so deeply",
+      "I love how even when you’re mad at me, you still care in the tiniest ways",
+      "I love how you laugh at your own jokes like they’re the funniest shit ever",
+      "I love how just being around you makes everything feel lighter",
+      "I love how you always pretend to be okay for everyone else but I see right through you",
+      "I love how no matter how weird you are, you’re still the most beautiful person I’ve ever met",
+      "I love that you fucking read all this,hopefully."
+
+
+
+    ];
+
+    const grid = document.getElementById("heartGrid");
+
+    for (let i = 0; i < 100; i++) {
+      const div = document.createElement("div");
+      div.classList.add("heart");
+      div.innerText = "❤️";
+      div.addEventListener("click", () => {
+        if (!div.classList.contains("revealed")) {
+          div.classList.add("revealed");
+          div.innerText = reasons[i] || `Reason ${i + 1}: [insert reason here]`;
+        }
+      });
+      grid.appendChild(div);
+    }
+  </script>
+</body>
+</html>

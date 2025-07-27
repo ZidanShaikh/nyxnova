@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Birthday Box 🎁</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    :root {
+      --bg-light: linear-gradient(135deg, #ffe0f0, #fff5f9);
+      --text-light: #333;
+      --bg-dark: #1a1a1a;
+      --text-dark: #f5f5f5;
+    }
+
+    body {
+      font-family: "Segoe UI", sans-serif;
+      background: var(--bg-light);
+      color: var(--text-light);
+      margin: 0;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    body.dark {
+      background: var(--bg-dark);
+      color: var(--text-dark);
+    }
+
+    .box {
+      width: 180px;
+      height: 180px;
+      background: url('../images/giftbox-removebg-preview.png') center center / contain no-repeat;
+      cursor: pointer;
+      margin-bottom: 1.5rem;
+      transition: transform 0.3s ease;
+    }
+
+    .box:active {
+      transform: scale(0.95) rotate(-2deg);
+    }
+
+    .paw {
+      position: absolute;
+      width: 120px;
+      height: auto;
+      pointer-events: none;
+      transition: all 0.5s ease;
+      opacity: 0;
+      transform: rotate(15deg);
+    }
+
+    .paw.show {
+      opacity: 1;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(0deg);
+    }
+
+    .message {
+      font-size: 1rem;
+      margin-top: 1rem;
+      max-width: 90%;
+    }
+
+    .countdown {
+      font-size: 0.9rem;
+      color: #777;
+      margin-top: 0.5rem;
+    }
+
+    .toggle-theme {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: none;
+      border: 2px solid var(--text-light);
+      border-radius: 50px;
+      padding: 0.4rem 0.8rem;
+      color: var(--text-light);
+      font-size: 0.9rem;
+      cursor: pointer;
+      z-index: 10;
+      transition: all 0.3s ease;
+    }
+
+    body.dark .toggle-theme {
+      border-color: var(--text-dark);
+      color: var(--text-dark);
+    }
+
+    body.dark .countdown {
+      color: #aaa;
+    }
+  </style>
+</head>
+<body>
+  <button class="toggle-theme" onclick="toggleTheme()">🌓</button>
+  <div class="box" onclick="slapBox()"></div>
+  <img id="paw" class="paw" src="../images/pngtree-slender-black-cat-paw-png-image_5787809-removebg-preview.png" alt="paw" />
+  <div class="message" id="message">Tap the box to open it…</div>
+  <div class="countdown" id="countdown"></div>
+
+  <script>
+    const messages = [
+      "Nova- Go Away mother,Too early.",
+      "Nyxie- HEYA!!! LEAVE NOW TOO SOON!",
+      "PRINCESS TOO EARLY!",
+      "You’re early, birthday girl.",
+      "Meow means 'no' today.",
+      "Nova- Oh no no, mother. Get Away.",
+      "Nyxie- Mother, he's working on this go away!"
+    ];
+
+    function slapBox() {
+      const paw = document.getElementById("paw");
+      const msg = document.getElementById("message");
+
+      paw.classList.add("show");
+      const index = Math.floor(Math.random() * messages.length);
+      msg.innerText = messages[index];
+
+      setTimeout(() => {
+        paw.classList.remove("show");
+      }, 1000);
+    }
+
+    function updateCountdown() {
+      const unlockDate = new Date("2025-08-07T00:00:00");
+      const now = new Date();
+      const diff = unlockDate - now;
+
+      if (diff <= 0) {
+        document.getElementById("message").innerText = "Fine... they’ve given permission. 🎁";
+        document.querySelector('.box').style.pointerEvents = 'none';
+        document.getElementById("countdown").innerText = "";
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      document.getElementById("countdown").innerText = `🕰 Unlocks in ${days} day(s)...`;
+    }
+
+    function toggleTheme() {
+      document.body.classList.toggle("dark");
+      localStorage.setItem("theme", document.body.classList.contains("dark") ? "dark" : "light");
+    }
+
+    window.onload = () => {
+      if (localStorage.getItem("theme") === "dark") {
+        document.body.classList.add("dark");
+      }
+      updateCountdown();
+      setInterval(updateCountdown, 1000);
+    };
+  </script>
+</body>
+</html>
