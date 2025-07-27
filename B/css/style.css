@@ -86,7 +86,7 @@ body.dark .card:hover {
 /* 🌌 Home Page background image */
 body.home-page::before {
   content: "";
-  background: url('../images/NovaNyxie.png') no-repeat center center fixed;
+  background: url('..https://zidanshaikh.github.io/nyxnova/B/images/NovaNyxie.png') no-repeat center center fixed;
   background-size: cover;
   filter: blur(8px) brightness(0.5);
   position: fixed;
