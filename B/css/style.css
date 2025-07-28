@@ -84,15 +84,27 @@ body.dark .card:hover {
 }
 
 /* 🌌 Home Page background image */
-body.home-page::before {
+/* 🐾 Slideshow background for home */
+/* body.home-page::before {
   content: "";
-  background: url('..https://zidanshaikh.github.io/nyxnova/B/images/NovaNyxie.png') no-repeat center center fixed;
-  background-size: cover;
-  filter: blur(8px) brightness(0.5);
   position: fixed;
   inset: 0;
   z-index: -1;
+  background-size: cover;
+  background-position: center;
+  animation: slideshow 32s infinite;
+  opacity: 0.5;
+  filter: blur(8px) brightness(0.6);
 }
+
+@keyframes slideshow {
+  0%    { background-image: url('/images/cats/nova1.jpg'); }
+  20%   { background-image: url('/images/cats/nyxie1.jpg'); }
+  40%   { background-image: url('/images/cats/nova2.jpg'); }
+  60%   { background-image: url('/images/cats/nyxie2.jpg'); }
+  80%   { background-image: url('/images/cats/nova1.jpg'); }
+  100%  { background-image: url('/images/cats/nyxie1.jpg'); }
+} */
 
 /* 📦 Home Page content block */
 .main-content {
@@ -171,3 +183,13 @@ body.dark .heart.revealed {
   background: rgba(42, 42, 42, 0.7);
 }
 
+.bg-slideshow {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background-size: cover;
+  background-position: center;
+  filter: blur(8px) brightness(0.5);
+  opacity: 1;
+  transition: opacity 1.5s ease-in-out;
+}
